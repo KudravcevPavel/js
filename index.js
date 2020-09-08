@@ -1,4 +1,86 @@
 /* eslint-disable no-console */
+
+/* 
+// задание №1
+const getDistance = (x1, y1, x2, y2) =>
+  Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+
+const showResult = (x1, y1, x2, y2, d) =>
+  console.log(
+    `Расстояние между точкой (${x1}, ${y1}) и точкой (${x2}, ${y2}) равняется ${d}`
+  );
+
+const px1 = 20;
+const py1 = 10;
+
+const px2 = 30;
+const py2 = 10;
+
+const d = getDistance(px1, py1, px2, py2);
+
+showResult(px1, py1, px2, py2, d); */
+
+// задание №1 (oject)
+
+const getDistance = (x1, y1, x2, y2) =>
+  Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+
+const showResult = (point, d) =>
+  console.log(
+    `Расстояние между точкой (${point.x1}, ${point.y1}) и точкой (${point.x2}, ${point.y2}) равняется ${d}`
+  );
+
+const point = {
+  x1: 20,
+  y1: 10,
+  x2: 30,
+  y2: 10,
+};
+const d = getDistance(point.x1, point.y1, point.x2, point.y2);
+
+showResult(point, d);
+
+// задание №2
+
+/* const Triangle = (a, b, c) => a ** 2 + b ** 2 === c ** 2;
+const ax = 10;
+const bx = 15;
+const cx = 20;
+const a = Triangle(ax, bx, cx);
+console.log(`Теорема Пифагора для чисел ${ax}, ${bx}, ${cx}, ${a}`);
+ */
+
+
+
+// задание №2 (Object)
+
+const Triangle = (a, b, c) => a ** 2 + b ** 2 === c ** 2;
+const lengths = {
+  a: 10,
+  b: 15,
+  c: 20,
+}
+const a = Triangle(lengths.a, lengths.b, lengths.c);
+console.log(`Теорема Пифагора для чисел ${lengths.a}, ${lengths.b}, ${lengths.c}, ${a}`);
+
+
+// задание №3
+
+
+function triangle(a, b, c) {
+  const check1 = a + b > c;
+  const check2 = b + c > a;
+  const check3 = c + a > b;
+  const answer = check1 && check2 && check3;
+  const action = answer ? "можно" : "нельзя";
+  return console.log(`на сторонах с длинами
+  ${a}, ${b}, ${c} ${action} построить треугольник`);
+}
+
+triangle(5, 18, 8);
+
+// задание №4  (аполнить массив 20 числами которые делятся на 3, или на 5, или на 15 и вывести его на экран )
+
 const numbers = [];
 
 let number = 3;
@@ -12,51 +94,63 @@ function numb(length, a, b, c) {
     }
     number += 1;
   }
-  return console.log(numbers);
+  return numbers;
 }
-numb(20, 3, 5, 15);
+console.log(numb(20, 3, 5, 15));
 
-/* Не Красиво  //*
+// задание №5 (посчитать произведение всех элементов находящихся в каждой третьей позиции)
 
+const thirdposition = () => {
+  let position = 1;
 
-/* const matrix1 = [];
-
-function matrixfor1(a, b) {
-  for (let i = 1; i <= a; i += 1) {
-    const row = [];
-    for (let j = 1; j <= b; j += 1) {
-      row.push(i * j);
-    }
-    matrix1.push(row);
+  for (let i = 0; i < numbers.length; i += 3) {
+    position *= numbers[i];
   }
-}
+  console.log(
+    `произведение всех элементов находящихся в каждой третьей позиции ${position}`
+  );
+};
 
-function matrixfor2(a, b) {
-  for (let i = 0; i < a; i += 1) {
-    let row = "";
-    for (let j = 0; j < b; j += 1) {
-      row += `${matrix1[i][j].toString()}\t`;
-    }
-    console.log(row);
+thirdposition();
+
+// задание №6 (посчитать среднее арифметическое всех чисел)
+
+const Sumall = () => {
+  let sum = 0;
+
+  for (let i = 0; i < numbers.length; i += 1) {
+    sum += numbers[i];
   }
-  return matrix1;
-}
+  const average = sum / numbers.length;
+  return console.log(`среднее арифметическое всех чисел ${average}`);
+};
 
-function tab(a, b) {
-  matrixfor1(a, b);
-  matrixfor2(a, b);
-}
+Sumall();
 
-tab(matrixfor1(10, 15), matrixfor2(10, 15));
- */
+// задание №7 (найти максимальное и минимальное число)
 
+const Max = () => {
+  let max = numbers[0];
+  let min = numbers[0];
+  for (let i = 1; i < numbers.length; i += 1) {
+    if (max < numbers[i]) max = numbers[i];
+  }
+  for (let i = 1; i < numbers.length; i += 1) {
+    if (min > numbers[i]) min = numbers[i];
+  }
 
+  return console.log(`максимальное число  ${max}, ${min}`);
+};
+Max();
 
+// задание №8 (вывести матрицу таблицы умножения)
 
 const matrix = [];
 
-function tab(a, b) {
 
+
+
+function tab(a, b) {
   for (let i = 1; i <= a; i += 1) {
     const row = [];
     for (let j = 1; j <= b; j += 1) {
@@ -77,256 +171,3 @@ function tab(a, b) {
 
 tab(10, 5);
 
-
-
-function triangle (a, b, c) {
-  const check1 = a + b > c;
-  const check2 = b + c >a;
-  const check3 = c + a >b;
-  const answer = check1 && check2 && check3;
-  const action = answer ? "можно" : "нельзя";
-  return console. log(`на сторонах с длинами
-  ${a}, ${b}, ${c} ${action} построить треугольник`);
-}
-
-triangle (5, 18, 8);
-
-
-
-
-
-
-/* Не разобрался до конца //*
-
-
-/* const matrix = [];
-
-function tab3(a) {
-  for (let i = 1; i <= a; i += 1) {
-    return i <= a ? i : a;
-  }
-}
-
-function tab4(b) {
-  for (let i = 1; i <= b; i += 1) {
-    return i <= b ? i : b;
-  }
-}
-
-function tab(a, b) {
-
-  tab3(a); {
-    const row = [];
-    tab4(b);
-    row.push(i * j);
-    matrix.push(row);
-  }
-
-  tab3(a); {
-    let row = "";
-    tab4(b);
-    row += `${matrix[i][j].toString()}\t`;
-    console.log(row);
-  }
-  return matrix;
-}
-tab3(10);
-tab4(10);
-tab(10, 5); */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-
-function sumProduct (){
-let product = 1;
-for (let index = 2; index < numbers.length; index += 3) {
-  product *= numbers[index];
-}
-console.log(product);
-}
-sumProduct();
-
-let max = numbers[0];
-
-for (let index = 1; index < numbers.length; index += 1) {
-  if (max < numbers[index]) {
-    max = numbers[index];
-  }
-}
-
-console.log(`max = ${max}`);
-
-let min = numbers[0];
-
-for (let index = 1; index < numbers.length; index += 1) {
-  if (min > numbers[index]) {
-    min = numbers[index];
-  }
-}
-
-console.log(`min = ${min}`);
-
-const matrix = [];
-
-for (let i = 1; i <= 9; i += 1) {
-  const row = [];
-  for (let j = 1; j <= 9; j += 1) {
-    row.push(i * j);
-  }
-  matrix.push(row);
-}
-
-for (let i = 0; i < 9; i += 1) {
-  let row = "";
-  for (let j = 0; j < 9; j += 1) {
-    row += `${matrix[i][j].toString()}\t`;
-  }
-  console.log(row);
-}
-
-
-let sum = 0;
-for (let i = 0; i < 9; i += 1) {
-  sum += matrix[i][i];
-}
-
-console.log(`sum = ${sum}`);
-
-console.log("============================");
-
-let mProduct = 1;
-let mCount = 0;
-for (let i = 0; i < 9; i += 1) {
-  mProduct *= matrix[i][8 - i];
-  mCount += 1;
-}
-
-console.log(
-  `mProduct = ${mProduct}, mCount = ${mCount}, g.avg = ${mProduct / mCount}`
-);
-
-console.log("***********************************************");
-
-const m = [];
-
-for (let i = 0; i < 9; i += 1) {
-  const row = [];
-  for (let j = 0; j < 9; j += 1) {
-    row.push(`${i}:${j}`);
-  }
-  m.push(row);
-}
-
-for (let i = 0; i < 9; i += 1) {
-  let row = "";
-  for (let j = 0; j < 9; j += 1) {
-    row += `${m[i][j].toString()}\t`;
-  }
-  console.log(row);
-}
-
-console.log("============================");
-
-for (let j = 2; j < 9; j += 2) {
-  let column = "";
-  for (let i = 0; i < 9; i += 1) {
-    column += `${m[i][j].toString()}\t`;
-  }
-  console.log(column);
-}
-
-// ********************************************************************
-console.log("***********************************************");
-
-// перебор элементов матрицы по строкам
-
-// перебираем строки и тогда i это номер строки
-for (let i = 0; i < 9; i += 1) {
-  // перебираем столбцы и тогда j это номер столбца
-  for (let j = 0; j < 9; j += 1) {
-    // индекс элемента это i, j
-    const value = matrix[i][j];
-  }
-}
-
-// перебор элементов матрицы по столбцам
-
-// перебираем столбцы и тогда i это номер столбца
-for (let i = 0; i < 9; i += 1) {
-  // перебираем строки и тогда j это номер строки
-  for (let j = 0; j < 9; j += 1) {
-    // индекс элемента это j, i
-    const value = matrix[j][i];
-  }
-}
-
-const sums = [];
-for (let i = 2; i < 9; i += 2) {
-  let columnSum = 0;
-  for (let j = 0; j < 9; j += 1) {
-    columnSum += matrix[j][i];
-  }
-  sums.push(columnSum);
-}
-
-let total = 0;
-for (let i = 0; i < sums.length; i += 1) {
-  total += sums[i];
-}
-
-// преобразовавние одномерного массива в строку с разделителем между элементами
-let seqText = "";
-let separator = ", ";
-for (let i = 0; i < sums.length; i += 1) {
-  if (i === sums.length - 1) {
-    separator = "";
-  }
-  seqText += `${sums[i].toString()}${separator}`;
-}
-
-console.log(
-  `Среднее арифметическое последовательности: (${seqText}) равняется = ${
-    total / sums.length
-  }`
-);
-
-for (let i = 0; i < 9; i += 1) {
-  let row = "";
-  for (let j = 0; j < 9; j += 1) {
-    row += `${matrix[i][j].toString()}\t`;
-  }
-  console.log(row);
-}
-
-console.log("==================================================");
-
-for (let i = 0; i < 9; i += 1) {
-  let row = "";
-  for (let j = 0; j < 9 - i; j += 1) {
-    row += `${matrix[i][j].toString()}\t`;
-  }
-  console.log(row);
-}
- */
