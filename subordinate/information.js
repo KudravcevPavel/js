@@ -1,6 +1,8 @@
-
-
-import {checkType, nonEmptyString, numberInRange} from "./validators.js";
+import {
+   checkType,
+   nonEmptyString,
+   numberInRange
+} from "./validators.js";
 
 export const user = {
    firstName: "test",
@@ -11,48 +13,58 @@ export const user = {
 
 export const userScheme = {
    firstName: [{
-         /* validator: {
-           params: ["string"],
-           rule: checkType
-         } */
-         validationRule: checkType,
-         validationParams: ["string"],
+         validator: {
+            params: ["string"],
+            rule: checkType,
+         },
          validationMessage: "First Name not string",
       },
       {
-         validationRule: nonEmptyString,
-         validationParams: [],
+         validator: {
+            params: [],
+            rule: nonEmptyString,
+         },
          validationMessage: "First Name is empty",
       },
    ],
    lastName: [{
-         validationRule: checkType,
-         validationParams: ["string"],
+         validator: {
+            params: ["string"],
+            rule: checkType,
+         },
          validationMessage: "Last Name not string",
       },
       {
-         validationRule: nonEmptyString,
-         validationParams: [],
+         validator: {
+            params: [],
+            rule: nonEmptyString,
+         },
          validationMessage: "Last Name is empty",
       },
    ],
    age: [{
-         validationRule: checkType,
-         validationParams: ["number"],
+         validator: {
+            params: ["number"],
+            rule: checkType,
+         },
          validationMessage: "Age not number",
       },
       {
-         validationRule: numberInRange,
-         validationParams: [10, 56],
+         validator: {
+            params: [10, 56],
+            rule: numberInRange,
+         },
          validationMessage: `Age not in range between 10 and 56`,
       },
    ],
    phone: [{
-      validationRule: checkType,
-      validationParams: ["string"],
+      validator: {
+         params: ["string"],
+         rule: checkType,
+      },
       validationMessage: "Phone not string",
    }, ],
 };
 
 user.firstName = "";
-user.age = 40;
+user.age = 100;
