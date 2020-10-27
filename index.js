@@ -1,15 +1,19 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-console */
 
-import {checkType, nonEmptyString, numberInRange} from "./subordinate/validators.js";
+import {validateObject} from "./validatorFanctions/validatorsmehanizm.js";
 
-import {validateFiled, validateObject} from "./subordinate/validatorsmehanizm.js";
+import {user} from "./users/user.js";
 
-import {dumpErrors} from "./subordinate/Errors.js";
+import {userScheme} from "./validationFiles/schemes/information.js";
 
-import {user} from "./subordinate/information.js";
-
-import {userScheme} from "./subordinate/information.js";
+function dumpErrors(errorList, validatedObject) {
+  errorList.forEach((error) => {
+    console.log(`Field: ${error.key}`);
+    console.log(`Provided value: ${validatedObject[error.key]}`);
+    console.log(`Message: ${error.message}`);
+  });
+}
 
 const result = validateObject(user, userScheme);
 

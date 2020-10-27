@@ -2,14 +2,7 @@ import {
    checkType,
    nonEmptyString,
    numberInRange
-} from "./validators.js";
-
-export const user = {
-   firstName: "test",
-   lastName: "test",
-   age: 78,
-   phone: "212412342134",
-};
+} from "../rules/validators.js";
 
 export const userScheme = {
    firstName: [{
@@ -66,5 +59,3 @@ export const userScheme = {
    }, ],
 };
 
-user.firstName = "";
-user.age = 100;
